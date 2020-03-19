@@ -1,21 +1,22 @@
-// if you want to show initial data :)
+// if you want to show initial data
 // const INITIAL_DATA = [
-// {
-// id: 0,
-// text: 'Walk the Dog',
-// },
-// {
-// id:1,
-// text: 'learn Redux',
-// },
+//     {
+//         id:0,
+//         text: 'Walk the dog'
+//     },
+//     {
+//         id:1, 
+//         text: 'learn redux'
+//     }
 // ]
-import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../actions/actionsTypes'
+import { ADD_TODO, REMOVE_TODO, TOGGLE_TODO } from '../action/actionTypes';
 const INITIAL_DATA = []
-const TodoReducer = (state = INITIAL_DATA, action) => {
+
+const TodoReducer = (state = INITIAL_DATA,action) => {
     switch (action.type) {
         case ADD_TODO:
             return [
-                ...state, {
+                ...state,{
                     id: action.id,
                     text: action.text,
                     completed: false,
@@ -23,14 +24,12 @@ const TodoReducer = (state = INITIAL_DATA, action) => {
             ]
         case TOGGLE_TODO:
             return state.map(todo =>
-                (todo.id === action.id)
-                    ? { ...todo, completed: !todo.completed }
-                    : todo
-            )
-        case REMOVE_TODO: const numIndex = parseInt(action.id)
+            (todo.id === action.id) ? {...todo, completed: !todo.completed} : todo) 
+        case REMOVE_TODO:
+            const numIndex = parseInt(action.id)
             return state.filter(todo => todo.id !== numIndex);
         default:
-            return state
+            return state;
     }
 }
-export default TodoReducer
+export default TodoReducer;
