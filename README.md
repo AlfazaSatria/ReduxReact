@@ -1,1 +1,1 @@
-# redux-jbs6
+# ReduxReact
